@@ -1,0 +1,69 @@
+/* === GENERALES === */
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7f9fc}
+h1{text-align:center;margin:40px 0;color:#2c3e50}
+h2{text-align:center;margin:40px 0;color:#2c3e50}
+h3{text-align:center;margin:2px 0;color:#2c3e50}
+h4{text-align:center;margin:30px 0;color:#2c3e50}
+
+/* === LAYOUT FLEX === */
+.contenedor-flex{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}
+.imagen-lateral{ position:static; top: 70px; flex:0 ;}
+.imagen-lateral img{width:500px;height:left; object-fit: contain; position:static; top: 70px;}
+
+header{background:#1263c9;padding:18px;text-align:center}
+nav a{margin:0 15px;color:#fff;text-decoration:none;font-weight:600}
+
+/* === CARD === */
+.card-form{background:#fff;border-radius:12px;padding:2rem 2.5rem;max-width:640px;justify-content: center; display: flex; flex-direction: column;
+align-items: center;box-shadow:0 8px 24px rgba(0,0,0,.09); margin-top: 1.5rem;}
+
+/* === FIELDSETS === */
+.box{border: start 50px;;background:#e9f4ff;border-left:5px solid #3a7ec4;padding:10px 20px 20px;
+     border-radius:10px;margin-bottom:2rem}
+.box legend{font-weight:700;color:#093b6b;margin-bottom:.15rem}
+
+/* === GRID === */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.1rem 5rem}
+.grid-2 label{display:flex;flex-direction:column;font-weight:600;color:#093b6b;font-size:.9rem; gap: .40rem;}
+.grid-2 i{margin-right:50rem}
+.grid-2 input{padding:1rem .6rem;border:none;border-bottom:2px solid #a4b8cc;background:#fff;
+              font-size:.9rem;outline:none}
+
+/* === BOTONES === */
+button[type=submit]{background:#1263c9;color:#fff;padding:.7rem 2.2rem;border:none; border-radius:5px;cursor:pointer;transition:.25s; display: block; margin:  2rem auto;}
+button[type=submit]:hover{background:#0c4a9c;}
+
+.boton-exportar{display:inline-block;margin-top:.8rem;background:#16a085;color:#fff;
+                padding:.55rem 1.1rem;border-radius:5px;text-decoration:none;transition:.25s}
+.boton-exportar:hover{background:#11826d}
+footer{text-align:center;padding:20px 0;background:#1263c9;color:#fff;margin-top:45px}
+
+.contenedor-resultados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem auto;
+    max-width: 1200px;
+}
+
+.resultados-box,
+.grafica-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.resultados-box p {
+    font-size: 1rem;
+    margin: 0.6rem 0;
+    color: #2c3e50;
+}
+
+.grafica-box canvas {
+    max-width: 100%;
+    height: auto;
+}

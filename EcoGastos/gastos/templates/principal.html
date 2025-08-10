@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoGastos– Inicio</title>
+    <link rel="stylesheet" href="{% static 'gastos/css/principal.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'asesoria' %}">Acesoria</a>
+            <a href="{% url 'about' %}">Sobre nosotros</a>
+            <a href="{% url 'comparativas' %}">Comparativas</a>
+
+            
+        </nav>
+    </header>
+
+    <h1 class="titulo">ECOGASTOS</h1>
+
+    <div class="opciones">
+        <a href="{% url 'gastos_mensuales' %}" class="opcion">
+            <img src="{% static 'gastos/imagenes/mensuales.png' %}" alt="Gastos mensuales">
+            <h2>Gastos mensuales</h2>
+        </a>
+
+        <a href="{% url 'gastos_anuales' %}" class="opcion">
+            <img src="{% static 'gastos/imagenes/anuales.png' %}" alt="Gastos anuales">
+            <h2>Gastos anuales</h2>
+        </a>
+    </div>
+
+    <footer>&copy; 2025 EcoGastos| Desarrollado por: Jorge, Uriel, Maythe, Abraham.
+    </footer>
+</body>
+</html>
+
+

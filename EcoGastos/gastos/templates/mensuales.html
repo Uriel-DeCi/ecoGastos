@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastos mensuales – EcoGastos</title>
+    <link rel="stylesheet" href="{% static 'gastos/css/mensuales.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          integrity="sha512-mNc11Yc7btC0+I3STEG4aZ0y5xDfY1pGmQxUAc1SgJJu83PlUvrwmrS+KonXN9CIJdwc6W8mX7z2Vdw4kW6s8g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'asesoria' %}">Acesoria</a>
+            <a href="{% url 'about' %}">Sobre nosotros</a>
+            <a href="{% url 'comparativas' %}">Comparativas</a>
+        </nav>
+    </header>
+
+    <h1>EcoGastos</h1> 
+    <h2>Calculadora de Gastos Mensuales</h2>
+
+    <div class="contenedor-flex">
+        <div class="imagen-lateral">
+            <img src="{% static 'gastos/imagenes/contador.png' %}" alt="Ilustración">
+        </div>
+
+        <div class="card-form">
+            <form method="POST">
+                {% csrf_token %}
+
+                <h3>"Favor de llenar cada campo solicitado"</h3>
+                <h4>IMPORTANTE: Si no conoces una cantidad, coloca "$0.00"</h4>
+
+                
+                <fieldset class="box">
+                    <legend>💰 Ingresos mensuales</legend>
+                    <div class="grid-2">
+                        <label><i class="fa-solid fa-money-bill-wave"></i> 💵 Salario neto
+                            <input type="number" step="0.01" name="salario_neto" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-circle-plus"></i> 💵 Otros ingresos
+                            <input type="number" step="0.01" name="otros_ingresos" placeholder="Importe" required>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="box">
+                    <legend>📌 Fijos obligatorios</legend>
+                    <div class="grid-2">
+                        <label><i class="fa-solid fa-house"></i> 🏠 Alquiler / hipoteca
+                            <input type="number" step="0.01" name="alquiler_hipoteca" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-triangle-exclamation"></i> ⚠️ Otros
+                            <input type="number" step="0.01" name="otros_obligatorios" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-hand-holding-dollar"></i> 🤝💵 Préstamos
+                            <input type="number" step="0.01" name="prestamos" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-coins"></i> ☠️ Impuestos
+                            <input type="number" step="0.01" name="impuestos" placeholder="Importe" required>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="box">
+                    <legend>💡 Fijos deducibles</legend>
+                    <div class="grid-2">
+                        <label><i class="fa-solid fa-droplet"></i> 💧 Agua
+                            <input type="number" step="0.01" name="agua" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-fire"></i> 🔥 GAS
+                            <input type="number" step="0.01" name="gas" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-bolt-lightning"></i> ⚡💡 Luz
+                            <input type="number" step="0.01" name="luz" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-burger"></i> 🍉🍗 Alimentación / Despensa
+                            <input type="number" step="0.01" name="alimentacion" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-wifi"></i> 🛜 Internet + ☎️ Tel + 🖥️ TV
+                            <input type="number" step="0.01" name="internet" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-bus"></i> 🚘 Transporte
+                            <input type="number" step="0.01" name="transporte" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-book"></i> 📗📖 Educación
+                            <input type="number" step="0.01" name="educacion" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-circle-question"></i> ⚠️ Imprevistos
+                            <input type="number" step="0.01" name="imprevistos" placeholder="Importe" required>
+                        </label>
+                    </div>
+                </fieldset>
+ 
+                <fieldset class="box">
+                    <legend>🌀 Variables</legend>
+                    <div class="grid-2">
+                        <label><i class="fa-solid fa-gamepad"></i> 🎮🖼️🎰 Ocio / gustos personales
+                            <input type="number" step="0.01" name="ocio" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-ticket"></i> ✈️ Viajes
+                            <input type="number" step="0.01" name="viajes" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-tv"></i> 🎬🍿 Suscripciones
+                            <input type="number" step="0.01" name="suscripciones" placeholder="Importe" required>
+                        </label>
+                        <label><i class="fa-solid fa-list-ul"></i> 👀 Otros gastos
+                            <input type="number" step="0.01" name="otros_gastos" placeholder="Importe" required>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="submit">Calcular</button>
+
+                {% if total_ingresos is not None %}
+                <section class="resultados">
+                    <h2>Resultados</h2>
+                    <p>💰Ingresos: {{ total_ingresos }} $</p>
+                    <p>📉Gastos: {{ total_gastos }} $</p>
+                    <p>💵Sobrante: {{ sobrante }} $</p>
+                </section>
+
+                    
+
+                {% endif %}
+            </form>
+    <form id="formExportarExcelMensual" action="{% url 'exportar_excel' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="salario_neto" value="{{ salario_neto }}">
+    <input type="hidden" name="otros_ingresos" value="{{ otros_ingresos }}">
+    <input type="hidden" name="alquiler_hipoteca" value="{{ alquiler_hipoteca }}">
+    <input type="hidden" name="prestamos" value="{{ prestamos }}">
+    <input type="hidden" name="impuestos" value="{{ impuestos }}">
+    <input type="hidden" name="agua" value="{{ agua }}">
+    <input type="hidden" name="gas" value="{{ gas }}">
+    <input type="hidden" name="luz" value="{{ luz }}">
+    <input type="hidden" name="alimentacion" value="{{ alimentacion }}">
+    <input type="hidden" name="internet" value="{{ internet }}">
+    <input type="hidden" name="transporte" value="{{ transporte }}">
+    <input type="hidden" name="educacion" value="{{ educacion }}">
+    <input type="hidden" name="imprevistos" value="{{ imprevistos }}">
+    <input type="hidden" name="ocio" value="{{ ocio }}">
+    <input type="hidden" name="viajes" value="{{ viajes }}">
+    <input type="hidden" name="suscripciones" value="{{ suscripciones }}">
+    <input type="hidden" name="otros_gastos" value="{{ otros_gastos }}">
+    <input type="hidden" name="ahorro" value="{{ ahorro }}">
+    <button type="submit">Exportar Excel Mensual</button>
+</form>
+        <div class="grafica-box">
+    <h3>Distribución de Gastos</h3>
+    <canvas id="graficaGastos" width="400" height="400"></canvas>
+    <div style="margin-top: 10px;">
+        <button type="submit" id="descargarPng">📥 Descargar Gráfica PNG</button>
+        <button type="submit" id="descargarPdf">📄 Descargar Gráfica PDF</button>
+    </div>
+</div>
+</div>
+</div>
+
+
+    <footer>&copy; 2025 EcoGastos | Desarrollado por: Jorge, Uriel, Maythe, Abraham.</footer>
+
+{% if total_gastos %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+    document.getElementById('descargarPng').addEventListener('click', () => {
+        const canvas = document.getElementById('graficaGastos');
+        const url = canvas.toDataURL('image/png');
+        const enlace = document.createElement('a');
+        enlace.href = url;
+        enlace.download = 'grafica_gastos.png';
+        enlace.click();
+    });
+
+    document.getElementById('descargarPdf').addEventListener('click', () => {
+        const canvas = document.getElementById('graficaGastos');
+        const imgData = canvas.toDataURL('image/png');
+
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pageWidth * 0.8;
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        const x = (pageWidth - pdfWidth) / 2;
+
+        pdf.addImage(imgData, 'PNG', x, 20, pdfWidth, pdfHeight);
+        pdf.save('grafica_gastos.pdf');
+    });
+</script>
+
+
+<script>
+    const ingresos = {{ total_ingresos|floatformat:2 }};
+    const dataGastos = [
+            { label: 'Alquiler/Hipoteca', value: {{ alquiler_hipoteca }} },
+            { label: 'Préstamos', value: {{ prestamos }} },
+            { label: 'Impuestos', value: {{ impuestos }} },
+            { label: 'Agua', value: {{ agua }} },
+            { label: 'Gas', value: {{ gas }} },
+            { label: 'Luz', value: {{ luz }} },
+            { label: 'Alimentación', value: {{ alimentacion }} },
+            { label: 'Internet', value: {{ internet }} },
+            { label: 'Transporte', value: {{ transporte }} },
+            { label: 'Educación', value: {{ educacion }} },
+            { label: 'Imprevistos', value: {{ imprevistos }} },
+            { label: 'Ocio', value: {{ ocio }} },
+            { label: 'Viajes', value: {{ viajes }} },
+            { label: 'Suscripciones', value: {{ suscripciones }} },
+            { label: 'Otros Gastos', value: {{ otros_gastos }} },
+            { label: 'Ahorro', value: {{ ahorro }} },
+    ];
+
+    const ctx = document.getElementById('graficaGastos').getContext('2d');
+    const grafica = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: dataGastos.map(item => item.label),
+            datasets: [{
+                data: dataGastos.map(item => item.value),
+                backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
+                        '#FF9F40', '#66FF66', '#FF66B2', '#6699FF', '#CCFF66',
+                        '#FF6666', '#00CC99', '#CCCCFF', '#FFCC99', '#CC9966',
+                        '#66CCCC', '#FFB266'
+                ],
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'right' }
+            }
+        }
+    });
+</script>
+{% endif %}
+</body>
+</html>

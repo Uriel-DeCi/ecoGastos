@@ -1,0 +1,92 @@
+/* ===== Paleta de colores ===== */
+:root {
+  --primario: #1263c9;
+  --secundario: #16a085;
+  --gris-fondo: #f4f7fc;
+  --texto: #1e1e1e;
+  --caja: #ffffff;
+  --gris-claro: #e9f4ff;
+}
+
+/* ===== Reset y estilos globales ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--gris-fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+/* ===== Header / Nav ===== */
+.site-header {
+  background: var(--primario);
+  padding: 1rem;
+}
+.site-header nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.site-header a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.site-header a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Contenido principal ===== */
+.about-container {
+  max-width: 800px;
+  margin: 2.5rem auto;
+  background: var(--caja);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+.about-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primario);
+  font-size: 2rem;
+}
+.about-container p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+.team {
+  margin-top: 2rem;
+}
+.team h2 {
+  margin-bottom: 1rem;
+  color: var(--secundario);
+  font-size: 1.3rem;
+  text-align: center;
+}
+.team ul {
+  list-style: none;
+  padding-left: 0;
+}
+.team li {
+  background: var(--gris-claro);
+  margin-bottom: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: var(--primario);
+  color: #fff;
+  margin-top: 18.8rem;
+}
+

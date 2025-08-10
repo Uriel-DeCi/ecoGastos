@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoGastos– Acesoria</title>
+    <link rel="stylesheet" href="{% static 'gastos/css/asesoria.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'asesoria' %}">Acesoria</a>
+            <a href="{% url 'about' %}">Sobre nosotros</a>
+            <a href="{% url 'comparativas' %}">Comparativas</a>
+
+            
+        </nav>
+    </header>
+
+<div class="form-container">
+    {% if enviado %}
+        <div class="mensaje-exito">
+            ¡Su solicitud fue enviada! Uno de nuestros asesores se comunicará con usted pronto.
+        </div>
+    {% else %}
+        <h2>Solicitar asesoría</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="telefono">Número telefónico</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <label for="motivo">Motivo de la asesoría</label>
+            <textarea id="motivo" name="motivo" rows="4" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    {% endif %}
+</div>
+
+</body>
+</html>
